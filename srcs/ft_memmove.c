@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 14:13:20 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/30 16:04:52 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 19:15:35 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,29 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	const char	*s;
 	char		*d;
-	char		temp[len];
 	size_t		i;
 
 	i = 0;
-	s = src;
-	d = dst;
-	while (i < len)
+	s = (char *)src;
+	d = (char *)dst;
+	if (s == NULL && d == NULL)
+		return (NULL);
+	if (d < s)
 	{
-		temp[i] = s[i];
-		i++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	i = 0;
-	while (i < len)
+	else
 	{
-		d[i] = temp[i];
-		i++;
+		i = len;
+		while (i != 0)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
 	}
 	return (d);
 }

@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 13:04:40 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/30 14:05:49 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 19:57:45 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	const char		*s;
-	unsigned char	*d;
+	unsigned char		*s;
+	unsigned char		*d;
+	size_t				i;
 
-	s = src;
-	d = dst;
-	while (n != 0)
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
+	i = 0;
+	while (i < n)
 	{
-		*d = *s;
-		if (*s == c)
-			break ;
-		d++;
-		s++;
-		n--;
+		d[i] = s[i];
+		if (d[i] == (unsigned char)c)
+			return ((void *)d + i + 1);
+		i++;
 	}
-	return (d);
+	return (NULL);
 }

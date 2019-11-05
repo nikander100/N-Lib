@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 18:05:28 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/30 19:54:58 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 19:06:20 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_isprint(int c)
 		return (1);
 	else if (c >= 060 && c <= 067)
 		return (1);
-	else if (c >= 070 && c <= 707)
+	else if (c >= 070 && c <= 077)
 		return (1);
 	else if (c >= 0100 && c <= 0107)
 		return (1);
@@ -34,7 +34,7 @@ int		ft_isprint(int c)
 		return (1);
 	else if (c >= 0160 && c <= 0167)
 		return (1);
-	else if (c >= 0170 && c <= 0177)
+	else if (c >= 0170 && c <= 0176)
 		return (1);
 	return (0);
 }

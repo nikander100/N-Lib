@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 17:55:09 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/30 18:46:37 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 18:57:54 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
+	const char		*src;
+	unsigned long	i;
+	unsigned long	n;
 
 	i = 0;
-	while (s[i] != sizeof(s))
+	n = 0;
+	src = s;
+	while (s[n] >= 001 && s[n] <= 0177)
+		n++;
+	n++;
+	while (i < n)
 	{
-		if (s[i] == c)
+		if (src[i] == '\0' && c != '\0')
+			return (NULL);
+		if (src[i] == c)
 			return ((char *)s + i);
 		i++;
 	}

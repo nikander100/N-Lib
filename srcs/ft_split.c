@@ -6,86 +6,78 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 18:56:08 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 16:25:34 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 18:11:52 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	count_splits(char const *s, char c)
+static int		is_char(char c, char s)
 {
-	int i;
-	int counter;
+	return (c == s);
+}
 
-	i = 0;
+static int		splits(char *str, char s)
+{
+	int	counter;
+
 	counter = 0;
-	while (s[i] != '\0')
+	while (*str)
 	{
-		if (s[i] == c && s[i + 1] != c)
+		while (*str && is_char(*str, s))
+			str++;
+		if (*str && !is_char(*str, s))
+		{
 			counter++;
-		i++;
+			while (*str && !is_char(*str, s))
+				str++;
+		}
 	}
-	if (s[i] != c)
-		counter++;
 	return (counter);
 }
 
-static int		find_next_start(char const *s, char c, int count)
+static char		*alloc(char *str, char s)
 {
-	int i;
-	int counter;
+	char	*word;
+	int		i;
 
 	i = 0;
-	counter = 0;
-	while (s[i] != '\0')
+	while (str[i] && !is_char(str[i], s))
+		i++;
+	word = (char *)malloc(sizeof(char) * (i + 1));
+	i = 0;
+	while (str[i] && !is_char(str[i], s))
 	{
-		if (s[i] == c && s[i + 1] != c)
-			counter++;
-		if (counter == count)
-			return (i);
+		word[i] = str[i];
 		i++;
 	}
-	return (i);
+	word[i] = '\0';
+	return (word);
 }
 
-static char		*put_into_array(char const *s, int start, int end)
+char			**ft_split(char const *s, char c)
 {
-	char	*result;
+	char	**arr;
 	int		i;
-	int		size;
 
-	size = end - start;
-	if ((result = malloc(sizeof(char) * size)) == NULL)
+	if (s == NULL)
+		return (NULL);
+	if ((arr = (char **)malloc(sizeof(char *)
+										* (splits((char *)s, c) + 1))) == NULL)
 		return (NULL);
 	i = 0;
-	if (start != 0)
-		start -= 1;
-	while (start < end)
+	while (*s)
 	{
-		result[i] = s[start];
-		start++;
-		i++;
+		while (*s && is_char(*s, c))
+			s++;
+		if (*s && !is_char(*s, c))
+		{
+			arr[i] = alloc((char *)s, c);
+			i++;
+			while (*s && !is_char(*s, c))
+				s++;
+		}
 	}
-	return (result);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**result;
-	int		i;
-	int		i2;
-	int		splits;
-
-	splits = count_splits(s, c);
-	if ((result = malloc(splits * sizeof(char*))) == NULL)
-		return (NULL);
-	i = 0;
-	i2 = 0;
-	while (i < splits)
-	{
-		result[i] = put_into_array(s, find_next_start(s, c, i),
-							find_next_start(s, c, i + 1));
-		i++;
-	}
-	return (result);
+	arr[i] = NULL;
+	return (arr);
 }

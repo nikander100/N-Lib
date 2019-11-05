@@ -6,23 +6,34 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 14:39:38 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/31 15:11:52 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/05 18:25:55 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-size_t		ft_strlcpy(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t			i;
+	char		*tdst;
+	char		*tend;
+	const char	*tsrc;
 
-	i = 0;
-	while (i + 1 < dstsize)
+	tdst = dst;
+	tend = dst + dstsize;
+	tsrc = src;
+	if (src == NULL)
+		return (0);
+	while (*tsrc != '\0' && tdst < tend)
 	{
-		dst[i] = src[i];
-		i++;
+		*tdst = *tsrc;
+		tdst++;
+		tsrc++;
 	}
-	i++;
-	dst[i] = '\0';
-	return (dst);
+	if (tdst < tend)
+		*tdst = 0;
+	else if (dstsize > 0)
+		tdst[-1] = 0;
+	while (*tsrc != '\0')
+		tsrc++;
+	return (tsrc - src);
 }
