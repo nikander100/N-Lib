@@ -6,11 +6,11 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 18:56:08 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 18:11:52 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/07 23:33:52 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static int		is_char(char c, char s)
 {
@@ -45,6 +45,8 @@ static char		*alloc(char *str, char s)
 	while (str[i] && !is_char(str[i], s))
 		i++;
 	word = (char *)malloc(sizeof(char) * (i + 1));
+	if (word == NULL)
+		return (NULL);
 	i = 0;
 	while (str[i] && !is_char(str[i], s))
 	{
@@ -55,16 +57,10 @@ static char		*alloc(char *str, char s)
 	return (word);
 }
 
-char			**ft_split(char const *s, char c)
+static char			**loop(char const *s, char c, char **arr)
 {
-	char	**arr;
 	int		i;
 
-	if (s == NULL)
-		return (NULL);
-	if ((arr = (char **)malloc(sizeof(char *)
-										* (splits((char *)s, c) + 1))) == NULL)
-		return (NULL);
 	i = 0;
 	while (*s)
 	{
@@ -73,11 +69,40 @@ char			**ft_split(char const *s, char c)
 		if (*s && !is_char(*s, c))
 		{
 			arr[i] = alloc((char *)s, c);
+			if (arr == NULL)
+			{
+				while (i >= 0)
+				{
+					free(arr[i]);
+					i--;
+				}
+				return (NULL);
+			}
 			i++;
 			while (*s && !is_char(*s, c))
 				s++;
 		}
 	}
 	arr[i] = NULL;
+	return (arr);
+}
+
+char			**ft_split(char const *s, char c)
+{
+	char	**arr;
+	int		i;
+
+	if (s == NULL)
+		return (NULL);
+	arr = (char **)malloc(sizeof(char *) * splits((char *)s, c) + 1);
+	if (arr == NULL)
+		return (NULL);
+	i = 0;
+	arr = loop(s, c, arr);
+	if (arr == NULL)
+	{
+		free(arr);
+		return (NULL);
+	}
 	return (arr);
 }

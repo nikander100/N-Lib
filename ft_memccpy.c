@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strchr.c                                        :+:    :+:            */
+/*   ft_memccpy.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 17:55:09 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 18:57:54 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/10/30 13:04:40 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 19:18:44 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	const char		*src;
-	unsigned long	i;
-	unsigned long	n;
+	unsigned char		*s;
+	unsigned char		*d;
+	size_t				i;
 
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
 	i = 0;
-	n = 0;
-	src = s;
-	while (s[n] >= 001 && s[n] <= 0177)
-		n++;
-	n++;
 	while (i < n)
 	{
-		if (src[i] == '\0' && c != '\0')
-			return (NULL);
-		if (src[i] == c)
-			return ((char *)s + i);
+		d[i] = s[i];
+		if (d[i] == (unsigned char)c)
+			return ((void *)d + i + 1);
 		i++;
 	}
 	return (NULL);

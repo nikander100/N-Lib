@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_bzero.c                                         :+:    :+:            */
+/*   ft_lstlast_bonus.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/29 19:00:37 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/30 19:16:30 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/11/07 21:29:53 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 21:59:27 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-void	ft_bzero(void *str, size_t n)
+t_list		*ft_lstlast(t_list *lst)
 {
-	unsigned char	*dest;
-	size_t			i;
+	t_list *current;
 
-	dest = str;
-	i = 0;
-	while (i < n)
-	{
-		*(dest + i) = '\0';
-		i++;
-	}
+	current = lst;
+	if (current == NULL)
+		return (NULL);
+	while (current->next != NULL)
+		current = current->next;
+	return (current);
 }

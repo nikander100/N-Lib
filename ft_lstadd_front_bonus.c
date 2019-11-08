@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memcmp.c                                        :+:    :+:            */
+/*   ft_lstadd_front_bonus.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 17:30:58 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 19:09:46 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/11/07 21:27:59 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 22:10:28 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	const unsigned char		*str1;
-	const unsigned char		*str2;
-	size_t					i;
+	t_list *new_list;
 
-	str1 = s1;
-	str2 = s2;
-	i = 0;
-	while (i < n)
-	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
-		i++;
-	}
-	return (0);
+	new_list = malloc(sizeof(t_list));
+	new_list = new;
+	new_list->next = *alst;
+	*alst = new_list;
 }

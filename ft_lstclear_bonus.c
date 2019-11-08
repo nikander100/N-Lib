@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strdup.c                                        :+:    :+:            */
+/*   ft_lstclear_bonus.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 13:59:17 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 18:21:54 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/11/07 21:28:26 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 22:43:34 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t	size;
-	size_t	i;
-	char	*ret;
-
-	size = 0;
-	i = 0;
-	while (s1[size] != '\0')
-		size++;
-	if ((ret = malloc(size * sizeof(char) + 1)) == NULL)
-		return (NULL);
-	while (i < size)
-	{
-		ret[i] = s1[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
+	if (lst == NULL || del == NULL)
+		return ;
+	if (*lst == NULL)
+		return ;
+	ft_lstclear(&((*lst)->next), del);
+	ft_lstdelone(*lst, del);
+	*lst = NULL;
 }

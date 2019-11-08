@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memccpy.c                                       :+:    :+:            */
+/*   ft_memmove.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/30 13:04:40 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 19:57:45 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/10/30 14:13:20 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 19:19:00 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char		*s;
-	unsigned char		*d;
-	size_t				i;
+	const char	*s;
+	char		*d;
+	size_t		i;
 
-	s = (unsigned char *)src;
-	d = (unsigned char *)dst;
 	i = 0;
-	while (i < n)
+	s = (char *)src;
+	d = (char *)dst;
+	if (s == NULL && d == NULL)
+		return (NULL);
+	if (d < s)
 	{
-		d[i] = s[i];
-		if (d[i] == (unsigned char)c)
-			return ((void *)d + i + 1);
-		i++;
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
 	}
-	return (NULL);
+	else
+	{
+		i = len;
+		while (i != 0)
+		{
+			d[i - 1] = s[i - 1];
+			i--;
+		}
+	}
+	return (d);
 }

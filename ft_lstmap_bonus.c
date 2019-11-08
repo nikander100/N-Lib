@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strlen.c                                        :+:    :+:            */
+/*   ft_lstmap_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 13:45:00 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/10/28 14:51:43 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/11/07 21:29:59 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 23:10:54 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list *map;
+	t_list *tmp;
+
+	if (lst == NULL || del == NULL || f == NULL)
+		return (NULL);
+	tmp = f(lst);
+	map = tmp;
+	while (lst->next)
 	{
-		i++;
+		lst = lst->next;
+		if (!(tmp->next = f(lst)))
+		{
+			ft_lstclear(&map, del);
+			return (NULL);
+		}
+		tmp = tmp->next;
 	}
-	return (i);
+	return (map);
 }

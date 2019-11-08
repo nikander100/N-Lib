@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/28 19:13:39 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 18:42:05 by nvan-der      ########   odam.nl         */
+/*   Created: 2019/11/07 16:21:29 by nvan-der       #+#    #+#                */
+/*   Updated: 2019/11/07 19:48:45 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-int		ft_strncmp(const char *str1, const char *str2, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned int i;
+	int		i;
 
 	i = 0;
-	if (str1[i] == '\0' && str2[i] != '\0')
-		return (-1);
-	while (i < n && str1[i] != '\0')
+	if (s == NULL)
+		return ;
+	while (s[i] != '\0')
 	{
-		if (str1[i] != str2[i])
-			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	return (0);
 }
