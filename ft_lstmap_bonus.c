@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 21:29:59 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 23:10:54 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/11 15:55:19 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *map;
-	t_list *tmp;
+	t_list	*new;
+	t_list	*first;
 
-	if (lst == NULL || del == NULL || f == NULL)
+	if (lst == NULL)
 		return (NULL);
-	tmp = f(lst);
-	map = tmp;
-	while (lst->next)
+	first = NULL;
+	while (lst)
 	{
-		lst = lst->next;
-		if (!(tmp->next = f(lst)))
+		new = ft_lstnew((*f)(lst->content));
+		if (new == NULL)
 		{
-			ft_lstclear(&map, del);
+			ft_lstclear(&first, del);
 			return (NULL);
 		}
-		tmp = tmp->next;
+		ft_lstadd_back(&first, new);
+		lst = lst->next;
 	}
-	return (map);
+	return (first);
 }
