@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 18:56:08 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 23:33:52 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/08 13:59:50 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,8 @@ static char		*alloc(char *str, char s)
 	return (word);
 }
 
-static char			**loop(char const *s, char c, char **arr)
+static char			**loop(char const *s, char c, char **arr, int i)
 {
-	int		i;
-
-	i = 0;
 	while (*s)
 	{
 		while (*s && is_char(*s, c))
@@ -98,7 +95,7 @@ char			**ft_split(char const *s, char c)
 	if (arr == NULL)
 		return (NULL);
 	i = 0;
-	arr = loop(s, c, arr);
+	arr = loop(s, c, arr, 0);
 	if (arr == NULL)
 	{
 		free(arr);

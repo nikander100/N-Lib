@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 16:10:35 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:26:40 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:05:49 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*result;
 
 	i = 0;
-	result = malloc((len + 1) * sizeof(char));
 	if (s == NULL || len == 0)
 		return (NULL);
-	if (result == NULL)
-		return (NULL);
 	if (start > ft_strlen((char *)s))
+		return (NULL);
+	result = malloc((len + 1) * sizeof(char));
+	if (result == NULL)
 		return (NULL);
 	while (i < len)
 	{

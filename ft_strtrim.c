@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 17:20:49 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:22:08 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:11:50 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	in_range(char const *s1, char const *set, int end)
 	size_t i;
 
 	i = 0;
-	while (s1[i] != '\0' && end != 0)
+	while (s1[i] != '\0' && end == 0)
 	{
 		if (!in_set(s1[i], set))
 			return (i);

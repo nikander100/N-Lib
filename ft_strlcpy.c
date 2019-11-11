@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 14:39:38 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:21:50 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/11 13:32:00 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	tdst = dst;
 	tend = dst + dstsize;
 	tsrc = src;
-	if (src == NULL)
+	if (dst == NULL)
 		return (0);
 	while (*tsrc != '\0' && tdst < tend)
 	{

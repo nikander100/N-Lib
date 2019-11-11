@@ -6,13 +6,13 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 15:11:38 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 19:04:59 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/08 14:04:52 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_toupper(int ch)
 {
-	if (ch>= 97 && ch <= 122)
+	if (ch >= 97 && ch <= 122)
 		ch -= 32;
 	return (ch);
 }

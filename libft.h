@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 15:17:39 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 23:13:02 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/11 14:34:17 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,6 @@ t_list				*ft_lstlast(t_list *lst);
 void				ft_lstadd_back(t_list **alist, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
+t_list				*ft_lstnew(void *content);
+char				*ft_strdup(const char *s1);
 #endif

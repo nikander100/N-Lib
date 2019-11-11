@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 21:29:08 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 22:37:00 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/11 13:17:40 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst == NULL)
 		return ;
-	(*del)(lst->content);
+	(del)(lst->content);
 	free(lst);
 }
