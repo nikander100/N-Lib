@@ -6,35 +6,42 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 14:19:34 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 18:32:46 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/11 17:42:42 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char *str)
-{
-	long	out;
-	int		sign;
-	long	max;
 
-	max = 9223372036854775807;
-	sign = 1;
-	out = 0;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\v' ||
-			*str == '\f' || *str == '\r')
-		str++;
-	if (*str == '-')
-	{
-		sign = -1;
-		str++;
-	}
-	else if (*str == '+')
-		str++;
-	while (*str != '\0' && *str >= '0' && *str <= '9')
-	{
-		if (out > max / 10)
-			return (sign == -1 ? 0 : -1);
-		out = out * 10 + *str - '0';
-		str++;
-	}
-	return (out * sign);
+
+static int    skipwhitespaces(const char *str, int i)
+{
+    while (str[i] == '\t' || str[i] == '\b' || str[i] == ' ' || str[i] == '\v'
+            || str[i] == '\n' || str[i] == '\r' || str[i] == '\f')
+        i++;
+    return (i);
+}
+
+int            ft_atoi(const char *str)
+{
+    int				i;
+	int				sign;
+    long			res;
+
+	res = 0;
+    i = skipwhitespaces(str, 0);
+    sign = (str[i] == '-') ? -1 : 1;
+    if (str[i] == '-' || str[i] == '+')
+        i++;
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+    	if (res >= 922337203685477580)
+    	{
+    		if ((sign == -1 && str[i] >= '9') || (sign == 1 && str[i] >= '8'))
+        		return ((sign == -1) ? 0 : -1);
+    		res = (res * 10) + (str[i] - '0');
+    		return ((int)res * sign);
+    	}
+    	res = (res * 10) + (str[i] - '0');
+    	i++;
+    }
+    return ((int)res * sign);
 }
