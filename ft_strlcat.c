@@ -6,31 +6,34 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 15:10:50 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:21:47 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/12 21:14:26 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcat(char *dst, char *src, size_t dstsize)
+size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t			i;
-	size_t			j;
-	size_t			ret;
+	char		*tdst;
+	char		*tsrc;
+	size_t		n;
+	size_t		n2;
 
-	i = 0;
-	j = 0;
-	ret = 0;
-	while (dst[i] != '\0' && dstsize > i)
-		i++;
-	while (src[ret] != '\0')
-		ret++;
-	ret = ret + i;
-	while (dstsize > i + 1)
+	tdst = (char *)ft_memchr(dst, '\0', dstsize);
+	if (!tdst)
+		return (dstsize + ft_strlen((char *)src));
+	tdst = (char *)dst;
+	tsrc = (char *)src;
+	n = ft_strlen(tdst);
+	n2 = n + ft_strlen(tsrc);
+	tdst += n;
+	while (n < dstsize - 1 && *tsrc)
 	{
-		dst[i] = src[j];
-		i++;
-		j++;
+		*tdst = *tsrc;
+		tdst++;
+		tsrc++;
+		n++;
 	}
-	return (ret);
+	*tdst = '\0';
+	return (n2);
 }
