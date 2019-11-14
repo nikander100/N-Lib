@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/30 17:55:09 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:21:36 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 18:29:05 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	n = 0;
 	src = s;
-	while (s[n] >= 001 && s[n] <= 0177)
+	while (s[n] != '\0')
 		n++;
 	n++;
 	while (i < n)

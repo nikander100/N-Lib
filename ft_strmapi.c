@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 18:56:32 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/12 21:43:18 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 20:36:18 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		result[i] = (*f)(i, s[i]);
 		i++;
 	}
-	return ((char *)result);
+	return (result);
 }

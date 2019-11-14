@@ -6,29 +6,28 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 18:56:08 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/13 14:08:41 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 18:35:02 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	calc(char const *s, char c)
+static int		calc(const char *s, int c)
 {
+	int		i;
 	size_t	count;
 
-	count = 1;
-	while (*s)
+	count = 0;
+	i = 0;
+	while (s[i] != '\0')
 	{
-		if (*s == c)
-		{
-			while (*s && *s == c)
-				s++;
-			if (s)
-				count++;
-		}
-		s++;
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != '\0')
+			count++;
+		i++;
 	}
-	return (count);
+	if (count == 1)
+		return (1);
+	return (count + 1);
 }
 
 static char		*get_next_str(char const **s, char c)

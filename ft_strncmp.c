@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 19:13:39 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/13 14:12:52 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 21:07:14 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	c1 = (unsigned const char *)s1;
 	c2 = (unsigned const char *)s2;
-	while (n)
+	while (n > 0)
 	{
 		if (*c1 != *c2)
 			return (*c1 - *c2);

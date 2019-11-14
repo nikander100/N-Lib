@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 17:20:49 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/08 14:11:50 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 15:02:38 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 	start = in_range(s1, set, 0);
 	end = in_range(s1, set, 1);
 	if (start == end)
-		return ("");
+		return (ft_strdup(""));
 	trimstr = copy_str(s1, start, end);
 	if (trimstr == NULL)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 12:31:16 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 19:17:54 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 14:04:52 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,13 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void			*p;
 	unsigned char	*ret;
 	size_t			i;
 
-	i = 0;
-	p = malloc(count * size);
-	if (p == NULL)
+	i = count * size;
+	ret = malloc(i);
+	if (ret == NULL)
 		return (NULL);
-	ret = (unsigned char *)p;
-	while ((count * size) > i)
-	{
-		ret[i] = 0;
-		i++;
-	}
-	return (p);
+	ft_bzero(ret, i);
+	return ((void *)ret);
 }

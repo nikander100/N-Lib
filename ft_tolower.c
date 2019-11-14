@@ -6,13 +6,13 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/28 15:31:51 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/05 19:04:34 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 21:12:46 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_tolower(int ch)
+int		ft_tolower(int c)
 {
-	if (ch >= 0101 && ch <= 0132)
-		ch += 32;
-	return (ch);
+	if (c >= 0101 && c <= 0132)
+		c += 32;
+	return (c);
 }

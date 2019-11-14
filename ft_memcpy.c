@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/29 19:19:39 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/12 19:52:07 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 15:41:47 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char		*s;
-	char		*d;
-	size_t		i;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
-	s = (char *)src;
-	d = (char *)dst;
+	s = (unsigned char *)src;
+	d = (unsigned char *)dst;
 	i = 0;
 	if (d == NULL && s == NULL && n > 0)
 		return (NULL);

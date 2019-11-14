@@ -6,34 +6,22 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 15:10:50 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/12 21:14:26 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/14 15:04:03 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	char		*tdst;
-	char		*tsrc;
-	size_t		n;
-	size_t		n2;
+	size_t	dstl;
+	size_t	srcl;
 
-	tdst = (char *)ft_memchr(dst, '\0', dstsize);
-	if (!tdst)
-		return (dstsize + ft_strlen((char *)src));
-	tdst = (char *)dst;
-	tsrc = (char *)src;
-	n = ft_strlen(tdst);
-	n2 = n + ft_strlen(tsrc);
-	tdst += n;
-	while (n < dstsize - 1 && *tsrc)
-	{
-		*tdst = *tsrc;
-		tdst++;
-		tsrc++;
-		n++;
-	}
-	*tdst = '\0';
-	return (n2);
+	dstl = ft_strlen(dst);
+	srcl = ft_strlen(src);
+	if (!dstsize || dstsize < dstl)
+		return (dstl + srcl - (dstl - dstsize));
+	dstsize -= dstl;
+	ft_strlcpy(dst + dstl, src, dstsize);
+	return (dstl + srcl);
 }
