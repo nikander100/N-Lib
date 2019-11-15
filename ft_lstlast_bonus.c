@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 21:29:53 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/07 21:59:27 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/15 19:29:36 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 t_list		*ft_lstlast(t_list *lst)
 {
-	t_list *current;
-
-	current = lst;
-	if (current == NULL)
+	if (lst == NULL)
 		return (NULL);
-	while (current->next != NULL)
-		current = current->next;
-	return (current);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }

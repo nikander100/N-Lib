@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 21:28:26 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/11 14:11:44 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/15 19:47:08 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (lst == NULL)
+	if (lst == NULL || *lst == NULL)
 		return ;
-	if (*lst == NULL)
-		return ;
-	ft_lstclear(&((*lst)->next), del);
+	ft_lstclear(&(*lst)->next, del);
 	ft_lstdelone(*lst, del);
 	*lst = NULL;
 }

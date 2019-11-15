@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/07 21:28:45 by nvan-der       #+#    #+#                */
-/*   Updated: 2019/11/12 19:51:10 by nvan-der      ########   odam.nl         */
+/*   Updated: 2019/11/15 19:29:06 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list *list;
-
-	list = lst;
-	while (list != NULL)
+	while (lst != NULL)
 	{
-		if (list->content != NULL)
-			f(list->content);
-		list = list->next;
+		if (lst->content != NULL)
+			f(lst->content);
+		lst = lst->next;
 	}
 }
