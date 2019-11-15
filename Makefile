@@ -6,7 +6,7 @@
 #    By: nvan-der <nvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/30 19:21:55 by nvan-der       #+#    #+#                 #
-#    Updated: 2019/11/14 20:04:59 by nvan-der      ########   odam.nl          #
+#    Updated: 2019/11/15 13:48:49 by nvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,16 +39,16 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $@ $^
+	$(AR) rcs $@ $^
 
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
-	rm -f $(REG_OBJS) $(BONUS_OBJS)
+	$(RM) $(REG_OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
