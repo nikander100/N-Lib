@@ -39,16 +39,16 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) rcs $@ $^
+	ar rcs $@ $^
 
 %.o: %.c
-	$(CC) -o $@ -c $< $(CFLAGS)
+	gcc -o $@ -c $< $(CFLAGS)
 
 clean:
-	$(RM) $(REG_OBJS) $(BONUS_OBJS)
+	rm -f $(REG_OBJS) $(BONUS_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
