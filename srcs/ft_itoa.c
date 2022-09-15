@@ -6,7 +6,7 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/05 15:19:54 by nvan-der      #+#    #+#                 */
-/*   Updated: 2021/03/15 17:24:02 by nvan-der      ########   odam.nl         */
+/*   Updated: 2022/09/15 22:34:38 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,26 @@ char	*ft_itoa(int n)
 	if (maxmin == 1)
 		result[i] = '8';
 	return (result);
+}
+
+// TODO NEW itoa, add saftey checks
+int	print_nbr(int nbr)
+{
+	int size = count_size(nbr, 10);
+	if (nbr == INT_MIN)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		size++;
+		ft_putnbr((nbr * -1), 10, BASE10);
+	}
+	else
+		ft_putnbr(nbr, 10, BASE10);
+	if (nbr == 0)
+		size++;
+	return (size);
 }
