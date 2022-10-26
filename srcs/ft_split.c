@@ -6,12 +6,12 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/04 16:33:41 by navn-der      #+#    #+#                 */
-/*   Updated: 2021/03/22 14:15:18 by nvan-der      ########   odam.nl         */
+/*   Updated: 2022/10/15 17:09:06 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "../libft.h"
+#include "libft.h"
 
 static int	ft_countstrings(char const *s, char c)
 {

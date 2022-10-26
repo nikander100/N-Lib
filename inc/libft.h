@@ -6,13 +6,14 @@
 /*   By: nvan-der <nvan-der@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/10/31 12:26:25 by nvan-der      #+#    #+#                 */
-/*   Updated: 2021/03/25 22:40:26 by nvan-der      ########   odam.nl         */
+/*   Updated: 2022/10/15 17:08:40 by nvan-der      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include "mytypes.h"
 
 typedef struct s_list
 {

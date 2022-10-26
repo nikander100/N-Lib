@@ -6,12 +6,12 @@
 #    By: nvan-der <nvan-der@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/10/28 14:42:36 by nvan-der      #+#    #+#                  #
-#    Updated: 2021/03/25 22:40:16 by nvan-der      ########   odam.nl          #
+#    Updated: 2022/10/15 17:09:42 by nvan-der      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-HEADER_FILES = libft.h
+INCLUDES = libft.h
 SRCS_FILES = ft_strlen.c ft_atoi.c ft_tolower.c ft_isalpha.c ft_isdigit.c \
 	ft_isalnum.c ft_isascii.c ft_isprint.c ft_toupper.c ft_strncmp.c \
 	ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
@@ -39,7 +39,7 @@ $(NAME): $(OBJS)
 	@ echo "\nDone making $(NAME)\n"
 
 %.o: %.c $(HEADER_FILES)
-	@ $(CC) -c $(CFLAGS) -o $@ $<
+	@ $(CC) -c $(CFLAGS) -I $(INCLUDES) -o $@ $<
 
 clean:
 	@ rm -f $(OBJS)
